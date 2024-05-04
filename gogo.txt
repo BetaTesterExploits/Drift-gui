@@ -1,0 +1,156 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/FybBQP3m"))()
+ 
+local Window = Library.CreateLib("Avtor Drift", "Synapse")
+ 
+ 
+local PlrTab = Window:NewTab("Menu")
+local PlrSection = PlrTab:NewSection("Menu")
+ 
+PlrSection:NewSlider("⚡Speed⚡", "Set you speed", 150, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+ 
+PlrSection:NewSlider("🔝Jump Power🔝", "Set you JumpPower", 250, 50, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+PlrSection:NewButton("🥷Enable FE Drift🥷", "Sigms", function()
+
+if game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").RigType == Enum.HumanoidRigType.R6 then
+
+game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").WalkSpeed = 50
+game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").JumpPower = 20
+game:GetService("Players").LocalPlayer.Character.Animate.walk.WalkAnim.AnimationId = "rbxassetid://129342287"
+game:GetService("Players").LocalPlayer.Character.Animate.run.RunAnim.AnimationId = "rbxassetid://129342287"
+game:GetService("Players").LocalPlayer.Character.Animate.fall.FallAnim.AnimationId = "rbxassetid://129342287"
+game:GetService("Players").LocalPlayer.Character.Animate.idle.Animation1.AnimationId = "rbxassetid://129342287"
+game:GetService("Players").LocalPlayer.Character.Animate.idle.Animation2.AnimationId = "rbxassetid://129342287"
+game:GetService("Players").LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId = "rbxassetid://129342287"
+for i, thing in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+if thing.ClassName == "Part" then
+thing.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
+end
+end
+local r6height = "-1.03"
+game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").HipHeight = r6height
+
+elseif game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").RigType == Enum.HumanoidRigType.R15 then
+game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").WalkSpeed = 60
+game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").JumpPower = 20
+game:GetService("Players").LocalPlayer.Character.Animate.walk.WalkAnim.AnimationId = "rbxassetid://3360694441"
+game:GetService("Players").LocalPlayer.Character.Animate.run.RunAnim.AnimationId = "rbxassetid://3360694441"
+game:GetService("Players").LocalPlayer.Character.Animate.fall.FallAnim.AnimationId = "rbxassetid://3360694441"
+game:GetService("Players").LocalPlayer.Character.Animate.idle.Animation1.AnimationId = "rbxassetid://3360694441"
+game:GetService("Players").LocalPlayer.Character.Animate.idle.Animation2.AnimationId = "rbxassetid://3360694441"
+game:GetService("Players").LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId = "rbxassetid://3360694441"
+for i, thing in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+if thing.ClassName == "MeshPart" then
+thing.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
+end
+end
+local r15height = "0.56"
+game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").HipHeight = r15height
+end
+end)
+
+
+PlrSection:NewButton("✅Spawn Visual Car✅", "Sigms", function()
+    --{{Made by Avtor}}--
+
+local p = game.Players.LocalPlayer
+local char = p.Character
+local larm = char["Left Arm"]
+local rarm = char["Right Arm"]
+local lleg = char["Left Leg"]
+local rleg = char["Right Leg"]
+local hed = char.Head
+local torso = char.Torso
+local hum = char.Humanoid
+local weld = Instance.new("Weld",torso)
+weld.Part0 = torso
+
+larm.Transparency = 1
+rarm.Transparency = 1
+lleg.Transparency = 1
+rleg.Transparency = 1
+hed.Transparency = 1
+torso.Transparency = 1
+
+
+local function unequipAccessories(player)
+    local character = player.Character
+    if character then
+        local humanoid = character:FindFirstChild("Humanoid")
+        if humanoid then
+            for _, accessory in pairs(humanoid:GetAccessories()) do
+                accessory:Destroy()
+            end
+        end
+    end
+end
+
+unequipAccessories(p)
+
+local train = Instance.new("Part",torso)
+train.Anchored = true
+train.CanCollide = false
+train.Size = Vector3.new(5,5,5)
+train.CustomPhysicalProperties = PhysicalProperties.new(0,0,0,0,0)
+weld.Part1 = train
+weld.C1 = CFrame.new(0,-5.6,0) * CFrame.Angles(0,math.rad(0),0)
+train.Anchored = false
+local TrainMesh = Instance.new("SpecialMesh",train)
+TrainMesh.MeshType = Enum.MeshType.FileMesh
+TrainMesh.Offset = Vector3.new(0,-5,0)
+TrainMesh.Scale = Vector3.new(4, 4, 4)
+TrainMesh.MeshId = "rbxassetid://8616335232"
+TrainMesh.TextureId = "rbxassetid://8616335604"
+
+
+for i,v in pairs(char:GetChildren()) do
+ if v:IsA("Part") then
+  v.Transparency = 1;
+ elseif v:IsA("Hat") then
+  v:Destroy()
+ elseif v:IsA("Model") then
+  v:Destroy()
+ end
+end
+
+
+
+
+local plr = game.Players.LocalPlayer
+local chr = plr.Character
+local maus = plr:GetMouse()
+local PGui=plr.PlayerGui
+local lleg = chr["Left Leg"]
+local rleg = chr["Right Leg"]
+local larm = chr["Left Arm"]
+local rarm = chr["Right Arm"]
+local hed = chr.Head
+local rutprt = chr.HumanoidRootPart
+local torso = chr.Torso
+local pseudohead=hed:Clone()
+for i,x in pairs(pseudohead:GetChildren()) do if not x.ClassName:find('Mesh') then x:Destroy() end end
+pseudohead.Name='PseudoHead'
+pseudohead.Parent=chr.Head
+local pseudoweld=Instance.new('Weld',torso)
+pseudoweld.Part0=hed
+pseudoweld.Name='PseudoHeadWeld'
+pseudoweld.Part1=pseudohead
+hed.Transparency=1
+for i,x in pairs(chr:GetChildren()) do
+if x:IsA'HHat' then x:destroy'' end end
+for i,x in pairs(chr:GetChildren()) do
+for a,v in pairs(x:GetChildren()) do
+if v:IsA'CharacterMesh' then v:destroy''
+end
+end
+end
+end)
+
+
+local CreatorTab = Window:NewTab("🟥Infoℹ🟥")
+local CreatorSection = CreatorTab:NewSection("Credits to Avtor1zaTion")
+local CreatorSection = CreatorTab:NewSection("🏆")
